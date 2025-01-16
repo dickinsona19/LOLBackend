@@ -10,7 +10,7 @@ import java.io.IOException;
 @Configuration
 public class FirebaseConfig {
     public FirebaseConfig() throws IOException {
-        FileInputStream serviceAccount = new FileInputStream("src/main/resources/hextechbets-firebase-adminsdk-z1p26-c9876487e3.json");
+        FileInputStream serviceAccount = new FileInputStream("src/main/resources/hextechbets-firebase-adminsdk-z1p26-3786e7fb73.json");
 
         FirebaseOptions options = FirebaseOptions.builder()
                 .setCredentials(GoogleCredentials.fromStream(serviceAccount))

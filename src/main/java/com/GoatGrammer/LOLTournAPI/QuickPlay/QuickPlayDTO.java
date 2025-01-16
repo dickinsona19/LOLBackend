@@ -9,8 +9,17 @@ public class QuickPlayDTO {
     private UserDTO host;
     private String title;
     private Double bid;
+    private UserDTO challenger;
 
     // Getters and Setters
+    public UserDTO getChallenger() {
+        return challenger;
+    }
+
+    public void setChallenger(UserDTO challenger) {
+        this.challenger = challenger;
+    }
+
     public Integer getId() {
         return id;
     }

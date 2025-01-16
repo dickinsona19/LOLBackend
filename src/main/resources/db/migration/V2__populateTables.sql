@@ -1,6 +1,7 @@
 INSERT INTO USERS (username, email, password) VALUES
 ('Shimmer', 'test@gmail.com', '$2a$10$ZXDV5zl4UUfB9vvauKHsFeu0QdUalQNGNWiM.czYOnLwqfpXvv2eC'),
-('Hitler', 'test@gmail.com2', '$2a$10$xzrPrLYtPfylp7TalaiRoe9eyhKDvWXmYlUZGX/CYTY0nBRk0A8Jm');
+('Hitler', 'test@gmail.com2', '$2a$10$xzrPrLYtPfylp7TalaiRoe9eyhKDvWXmYlUZGX/CYTY0nBRk0A8Jm'),
+('Anndreuis', 'Anndreuis@gmail.com', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a');
 
 INSERT INTO ACCOUNT_TYPE(account_type_name) VALUES
 ('YouTube'),
@@ -22,7 +23,11 @@ VALUES
 ( 'Hitler',
   (SELECT id FROM USERS WHERE username = 'Hitler' LIMIT 1),
   (SELECT id FROM ACCOUNT_TYPE WHERE account_type_name = 'LeagueOfLegendsAccount' LIMIT 1)
-);
+),
+ ( 'Anndreuis',
+   (SELECT id FROM USERS WHERE username = 'Anndreuis' LIMIT 1),
+   (SELECT id FROM ACCOUNT_TYPE WHERE account_type_name = 'LeagueOfLegendsAccount' LIMIT 1)
+ );
 
 INSERT INTO TOURNAMENT_TYPE (name)
 VALUES ('Single Elimination'),
@@ -52,5 +57,7 @@ VALUES (1, 1),
 
 
 INSERT INTO QUICK_PLAY (host_id, title, bid)
-VALUES (1, 'Hitlers 1v1', 50.01),
-       (2, 'Shimmler 1v1', 80.10);
+VALUES (1, 'Hitlers 1v1', 50.01);
+
+INSERT INTO QUICK_PLAY (host_id, title, bid, challenger_id)
+VALUES (2, 'Hitlerswefwe 1v1', 50.01, 3);

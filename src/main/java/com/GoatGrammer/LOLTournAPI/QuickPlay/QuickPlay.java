@@ -21,7 +21,22 @@ public class QuickPlay {
     @Column(name = "bid")
     private Double bid;
 
+    @OneToOne
+    @JoinColumn(name = "challenger_id", unique = true)
+    private User challenger;
+
+
     // Getters and Setters
+
+
+    public User getChallenger() {
+        return challenger;
+    }
+
+    public void setChallenger(User challenger) {
+        this.challenger = challenger;
+    }
+
     public Integer getId() {
         return id;
     }
