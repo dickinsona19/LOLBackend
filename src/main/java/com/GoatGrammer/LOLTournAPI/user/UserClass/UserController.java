@@ -104,4 +104,15 @@ public class UserController {
         // Return an unauthorized response if token is invalid or user not found
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
+    @PatchMapping("/{id}/CurrentlyInA1v1")
+    public ResponseEntity<UserDTO> updateCurrentlyInA1v1Status(@PathVariable int id, @RequestParam boolean isParticipating) {
+        try {
+            User updatedUser = userService.updateCurrentlyInA1v1Status(id, isParticipating);
+            UserDTO userDTO = UserDTO.convertToDTO(updatedUser);
+            return ResponseEntity.ok(userDTO);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(null); // Handle errors gracefully
+        }
+    }
+
 }

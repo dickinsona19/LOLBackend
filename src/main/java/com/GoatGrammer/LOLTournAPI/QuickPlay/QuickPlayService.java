@@ -2,6 +2,8 @@ package com.GoatGrammer.LOLTournAPI.QuickPlay;
 
 import com.GoatGrammer.LOLTournAPI.user.UserClass.User;
 import com.GoatGrammer.LOLTournAPI.user.UserClass.UserDTO;
+import com.GoatGrammer.LOLTournAPI.user.UserClass.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,9 @@ import java.util.stream.Collectors;
 public class QuickPlayService {
 
     private final QuickPlayRepository quickPlayRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public QuickPlayService(QuickPlayRepository quickPlayRepository) {
         this.quickPlayRepository = quickPlayRepository;
@@ -59,4 +64,24 @@ public class QuickPlayService {
         }
         return dto;
     }
+
+    public QuickPlay addChallenger(Integer quickPlayId, Integer challengerId) {
+        // Fetch the QuickPlay instance
+        Optional<QuickPlay> quickPlayOptional = quickPlayRepository.findById(quickPlayId);
+        if (!quickPlayOptional.isPresent()) {
+            throw new RuntimeException("QuickPlay not found for ID: " + quickPlayId);
+        }
+
+        // Fetch the User instance for the challenger
+        Optional<User> challengerOptional = userRepository.findById(challengerId);
+        if (!challengerOptional.isPresent()) {
+            throw new RuntimeException("User not found for ID: " + challengerId);
+        }
+
+        // Set the challenger and save the QuickPlay instance
+        QuickPlay quickPlay = quickPlayOptional.get();
+        quickPlay.setChallenger(challengerOptional.get());
+        return quickPlayRepository.save(quickPlay);
+    }
+
 }

@@ -51,4 +51,12 @@ public class QuickPlayController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @PutMapping("/add-challenger/{id}")
+    public ResponseEntity<QuickPlay> addChallenger(
+            @PathVariable Integer id,
+            @RequestParam Integer challengerId) {
+        QuickPlay updatedQuickPlay = quickPlayService.addChallenger(id, challengerId);
+        return ResponseEntity.ok(updatedQuickPlay);
+    }
 }

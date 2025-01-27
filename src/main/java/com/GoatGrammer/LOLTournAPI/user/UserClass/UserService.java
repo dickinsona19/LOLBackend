@@ -14,6 +14,6 @@ public interface UserService {
     Optional<User> getUserByEmail(String email);
     boolean checkPassword(User user, String rawPassword);
     void logoutUser(String email);
-
+    User updateCurrentlyInA1v1Status(int userId, boolean isParticipating);
 
 }

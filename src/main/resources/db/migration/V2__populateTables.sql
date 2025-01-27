@@ -1,7 +1,13 @@
-INSERT INTO USERS (username, email, password) VALUES
-('Shimmer', 'test@gmail.com', '$2a$10$ZXDV5zl4UUfB9vvauKHsFeu0QdUalQNGNWiM.czYOnLwqfpXvv2eC'),
-('Hitler', 'test@gmail.com2', '$2a$10$xzrPrLYtPfylp7TalaiRoe9eyhKDvWXmYlUZGX/CYTY0nBRk0A8Jm'),
-('Anndreuis', 'Anndreuis@gmail.com', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a');
+INSERT INTO USERS (username, email, password, is_currently_in_a_1v1) VALUES
+('Shimmer', 'test@gmail.com', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a', false),
+('Hitler', 'test@gmail.com2', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a', false),
+('Test1', 'test@gmail.com3', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a', false),
+('Test2', 'test@gmail.com4', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a', false),
+('Test3', 'test@gmail.com5', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a', false),
+('Test4', 'test@gmail.com6', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a', false),
+('Test5', 'test@gmail.com7', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a', false),
+('Test6', 'test@gmail.com8', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a', false),
+('Anndreuis', 'Anndreuis@gmail.com', '$2a$10$JLw7afPltZa4aL2LnICzyO.1UuOPBPb9m5xSAQLf3U31oEMArR8/a', false);
 
 INSERT INTO ACCOUNT_TYPE(account_type_name) VALUES
 ('YouTube'),
@@ -47,6 +53,7 @@ VALUES ('LoL World Championship', 1, '2024-11-01', 'The biggest LoL tournament',
        ('Valorant Champions', 2, '2024-12-05', 'Valorant global tournament', '2024-12-15', 32, 2, 1),
        ('Dota 2 Invitational', 3, '2024-10-25', 'A Dota 2 tournament for top teams', '2024-11-05', 8, 3, 1);
 
+
 INSERT INTO TOURNAMENT_PARTICIPANTS (tournament_id, user_id)
 VALUES (1, 1),
        (1, 2),
@@ -61,3 +68,12 @@ VALUES (1, 'Hitlers 1v1', 50.01);
 
 INSERT INTO QUICK_PLAY (host_id, title, bid, challenger_id)
 VALUES (2, 'Hitlerswefwe 1v1', 50.01, 3);
+
+INSERT INTO ACTIVITIES (name)
+VALUES ('quick_play'),
+       ('tournament');
+
+INSERT INTO USER_ENROLLMENT (user_id, activity_id, quick_play_id)
+VALUES (9, 1, 1);
+
+

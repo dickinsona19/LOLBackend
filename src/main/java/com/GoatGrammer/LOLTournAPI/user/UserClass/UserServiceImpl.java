@@ -65,4 +65,11 @@ public class UserServiceImpl implements UserService {
             userRepository.save(user); // Save the updated user back to the database
         }
     }
+    @Override
+    public User updateCurrentlyInA1v1Status(int userId, boolean isParticipating) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + userId));
+        user.setCurrentlyInA1v1(isParticipating);
+        return userRepository.save(user);
+    }
 }

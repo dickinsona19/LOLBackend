@@ -7,13 +7,15 @@ public class UserDTO {
     private String username;
     private String email;
     private List<LinkedAccountDTO> linkedAccounts;
+    private boolean isCurrentlyInA1v1; // Added field
 
     // Constructor to initialize UserDTO fields
-    public UserDTO(int id, String username, String email, List<LinkedAccountDTO> linkedAccounts) {
+    public UserDTO(int id, String username, String email, List<LinkedAccountDTO> linkedAccounts, boolean isCurrentlyInA1v1) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.linkedAccounts = linkedAccounts;
+        this.isCurrentlyInA1v1 = isCurrentlyInA1v1; // Initialize the new field
     }
 
     // Getters and setters
@@ -49,6 +51,14 @@ public class UserDTO {
         this.linkedAccounts = linkedAccounts;
     }
 
+    public boolean isCurrentlyInA1v1() {
+        return isCurrentlyInA1v1;
+    }
+
+    public void setCurrentlyInA1v1(boolean currentlyInA1v1) {
+        isCurrentlyInA1v1 = currentlyInA1v1;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -56,6 +66,7 @@ public class UserDTO {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", linkedAccounts=" + linkedAccounts +
+                ", isCurrentlyInA1v1=" + isCurrentlyInA1v1 +
                 '}';
     }
 
@@ -67,6 +78,6 @@ public class UserDTO {
                 ))
                 .toList();
 
-        return new UserDTO(user.getId(), user.getUsername(), user.getEmail(), linkedAccounts);
+        return new UserDTO(user.getId(), user.getUsername(), user.getEmail(), linkedAccounts, user.isCurrentlyInA1v1());
     }
 }
